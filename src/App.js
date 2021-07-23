@@ -1,10 +1,10 @@
 import React, {useState,useEffect} from "react";
-import { Route,Link,Switch,Redirect} from "react-router-dom";
+import { Route,Link,Switch} from "react-router-dom";
 import Home from './Home.js'
 import axios from 'axios'
 import Form from './Form.js'
 import schema from './formSchema.js'
-import { validate } from "@babel/types";
+import { reach } from "yup";
 //Initial Values
 const iniFormValues ={
 name: '',
@@ -57,7 +57,12 @@ const App = () => {
     setFormValues(iniFormValues)
   })
  }
-
+const validate = (name, value) => {
+reach(schema,name)
+.validate(value)
+.then(() => setFormErrors({...formErrors, [name]: ''}))
+.catch(err => ({...formErrors, [name]: err.errors[0]}))
+}
  const inputChange = (name, value) => {
    validate(name,value)
    setFormValues({
@@ -70,11 +75,6 @@ const App = () => {
    name: formValues.name.trim(),
    size: formValues.size.trim(),
    sauce: formValues.sauce.trim(),
-  topping1: formValues.topping1.trim(),
-  topping2: formValues.topping2.trim(),
-  topping3: formValues.topping3.trim(),
-  topping4: formValues.topping4.trim(),
-  gluten: formValues.gluten.trim(),
   special: formValues.special.trim(),
  }
  postNewOrder(newOrder)
@@ -83,6 +83,9 @@ const App = () => {
    getOrder()
  },[])
 
+ useEffect(() => {
+   schema.isValid(formValues).then(valid => setDisabled(!valid))
+ },[formValues])
   return (
     <>
       <h1>Lambda Eats</h1>

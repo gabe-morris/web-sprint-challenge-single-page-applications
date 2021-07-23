@@ -10,3 +10,5 @@ size: yup
 .string()
 .required('Pizza size is required'),
 })
+
+export default formSchema
