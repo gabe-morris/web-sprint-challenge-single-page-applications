@@ -35,6 +35,7 @@ const App = () => {
 
   //HELPERS
  const getOrder = () => {
+   return(
    axios.get('https://reqres.in/api/orders')
    .then(res => {
       console.log(res.data)
@@ -43,6 +44,7 @@ const App = () => {
    .catch(err => {
      console.log(err)
    })
+   )
  }
  const formSubmit = () => {
   const newOrder = {
