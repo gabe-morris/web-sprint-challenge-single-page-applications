@@ -69,7 +69,6 @@ reach(schema,name)
   const newOrder = {
     name: formValues.name.trim(),
     size: formValues.size.trim(),
-    sauce: formValues.sauce.trim(),
    special: formValues.special.trim(),
   }
   postNewOrder(newOrder)
