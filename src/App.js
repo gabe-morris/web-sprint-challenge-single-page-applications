@@ -10,7 +10,8 @@ const iniFormValues ={
 name: '',
 //Dropdown
 size: '',
-sauce: '',
+sauce: false, //radio
+//checkboxes
 topping1: false,
 topping2: false,
 topping3: false,
@@ -22,13 +23,12 @@ special: ''
    name: '',
    size: '',
  }
-
  const iniOrder = []
  const iniDisabled = true
 
 const App = () => {
   //STATES
-  const [orders, setOrder] = useState(iniOrder) //arr
+  const [order, setOrder] = useState(iniOrder) //arr
   const [formValues, setFormValues] = useState(iniFormValues) //obj
   const [formErrors,setFormErrors] = useState(iniFormErrors) //obj
   const [disabled, setDisabled] = useState(iniDisabled) //boolean
@@ -44,11 +44,23 @@ const App = () => {
      console.log(err)
    })
  }
+ const formSubmit = () => {
+  const newOrder = {
+    name: formValues.name.trim(),
+    size: formValues.size.trim(),
+    sauce: formValues.sauce.trim(),
+   special: formValues.special.trim(),
+  }
+  postNewOrder(newOrder)
+  }
 
  const postNewOrder = newOrder => {
+
   axios.post('https://reqres.in/api/orders', newOrder)
   .then(res => {
-    setOrder([res.data,...orders])
+    setOrder([res.data])
+    console.log(order)
+    console.log(res.data)
   })
   .catch(err => {
     console.log(err)
@@ -66,21 +78,15 @@ reach(schema,name)
  const inputChange = (name, value) => {
    validate(name,value)
    setFormValues({
-     ...formValues,[name]:value
+     ...formValues,
+     [name]: value
    })
  }
 
- const formSubmit = () => {
- const newOrder = {
-   name: formValues.name.trim(),
-   size: formValues.size.trim(),
-   sauce: formValues.sauce.trim(),
-  special: formValues.special.trim(),
- }
- postNewOrder(newOrder)
- }
+
+
  useEffect(() => {
-   getOrder()
+  getOrder()
  },[])
 
  useEffect(() => {

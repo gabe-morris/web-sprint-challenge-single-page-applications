@@ -9,6 +9,16 @@ name: yup
 size: yup
 .string()
 .required('Pizza size is required'),
+sauce: yup
+.string()
+.notRequired(),
+special: yup
+.string()
+.notRequired(),
+topping1:yup.boolean(),
+topping2:yup.boolean(),
+topping3:yup.boolean(),
+topping4:yup.boolean(),
+gluten: yup.boolean(),
 })
-
 export default formSchema
