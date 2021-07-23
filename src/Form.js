@@ -29,14 +29,14 @@ return (
     </div>
     <div className ='form-group inputs'>
     <h4>Order Name</h4>
-    <input
+    <input id = 'name-input'
     value={values.name}
     onChange={onChange}
     name ='name'
     type = 'text'
     />
     <h4>Choose a size</h4>
-    <select 
+    <select id ='size-dropdown'
     onChange={onChange}
     value ={values.size}
     name ='size'
@@ -131,10 +131,16 @@ return (
         checked={values.gluten}
         />
     </label>
+    <h4>Special Instructions</h4>
+        <input id = 'special-text'
+        type ='text'
+        name ='special'
+        value ={values.special}
+        onChange = {onChange}
+        />
         </div>
+        <button disabled={disabled}>Add To Order</button>
     </div>
-
-    <button disabled={disabled}>Add To Order</button>
 </form>
 
 
