@@ -13,6 +13,9 @@ size: '',
 sauce: '',
 topping1: false,
 topping2: false,
+topping3: false,
+topping4: false,
+gluten:false,
 special: ''
 }
  const iniFormErrors = {
@@ -68,6 +71,8 @@ const App = () => {
    size: formValues.size.trim(),
   topping1: formValues.topping1.trim(),
   topping2: formValues.topping2.trim(),
+  topping3: formValues.topping3.trim(),
+  topping4: formValues.topping4.trim(),
   special: formValues.special.trim(),
  }
  }
