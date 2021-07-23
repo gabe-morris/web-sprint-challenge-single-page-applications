@@ -26,16 +26,16 @@ return (
     <div className ='errors'>
     <div>{errors.name}</div>
     <div>{errors.size}</div>
+    </div>
     <div className ='form-group inputs'>
-    <label> Name for order
+    <h4>Order Name</h4>
     <input
     value={values.name}
     onChange={onChange}
     name ='name'
     type = 'text'
     />
-    </label>
-    <label>Choice of Size</label>
+    <h4>Choose a size</h4>
     <select 
     onChange={onChange}
     value ={values.size}
@@ -47,16 +47,45 @@ return (
     <option value ='medium'>Medium(12")</option>
     <option value ='large'>Large(16")</option>
     </select>
-    <label> Choice of Sauce
-
+    <h4>Choose a sauce</h4>
+    <label> Original Red
+    <input
+    type ='radio'
+    name ='sauce'
+    value ='original'
+    onChange ={onChange}
+    checked={values.sauce === 'original'}
+    />
     </label>
-
-    </div>
-
-
-    </div>
-
-
+    <label> Garlic Ranch
+    <input
+    type ='radio'
+    name ='sauce'
+    value ='garlic'
+    onChange ={onChange}
+    checked={values.sauce === 'garlic'}
+    />
+    </label>
+    <label>BBQ Sauce
+    <input
+    type ='radio'
+    name ='sauce'
+    value ='bbq'
+    onChange ={onChange}
+    checked={values.sauce === 'bbq'}
+    />
+    </label>
+    <label>Spinach Alfredo
+    <input
+    type ='radio'
+    name ='sauce'
+    value ='alfredo'
+    onChange ={onChange}
+    checked={values.sauce === 'alfredo'}
+    />
+    </label>
+    
+        </div>
     </div>
 
     <button disabled={disabled}>Add To Order</button>

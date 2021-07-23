@@ -75,8 +75,8 @@ const App = () => {
   return (
     <>
       <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
       <Link to ='/'>Home</Link>
+      <div>
       <Switch>
         <Route path='/pizza'>
           <Form
@@ -91,6 +91,7 @@ const App = () => {
         <Home/>
       </Route>
       </Switch>
+      </div>
     </>
 
     
