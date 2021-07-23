@@ -34,35 +34,14 @@ const App = () => {
   const [disabled, setDisabled] = useState(iniDisabled) //boolean
 
   //HELPERS
- const getOrder = () => {
-   return(
-   axios.get('https://reqres.in/api/orders')
-   .then(res => {
-      console.log(res.data)
-     setOrder(res.data)
-   })
-   .catch(err => {
-     console.log(err)
-   })
-   )
- }
- const formSubmit = () => {
-  const newOrder = {
-    name: formValues.name.trim(),
-    size: formValues.size.trim(),
-    sauce: formValues.sauce.trim(),
-   special: formValues.special.trim(),
-  }
-  postNewOrder(newOrder)
-  }
 
  const postNewOrder = newOrder => {
 
   axios.post('https://reqres.in/api/orders', newOrder)
   .then(res => {
-    setOrder([res.data])
-    console.log(order)
+    setOrder([res.data,...order])
     console.log(res.data)
+    console.log(order)
   })
   .catch(err => {
     console.log(err)
@@ -85,11 +64,17 @@ reach(schema,name)
    })
  }
 
+ 
+ const formSubmit = () => {
+  const newOrder = {
+    name: formValues.name.trim(),
+    size: formValues.size.trim(),
+    sauce: formValues.sauce.trim(),
+   special: formValues.special.trim(),
+  }
+  postNewOrder(newOrder)
+  }
 
-
- useEffect(() => {
-  getOrder()
- },[])
 
  useEffect(() => {
    schema.isValid(formValues).then(valid => setDisabled(!valid))
