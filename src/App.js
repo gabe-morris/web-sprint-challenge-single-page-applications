@@ -69,18 +69,26 @@ const App = () => {
  const newOrder = {
    name: formValues.name.trim(),
    size: formValues.size.trim(),
+   sauce: formValues.sauce.trim(),
   topping1: formValues.topping1.trim(),
   topping2: formValues.topping2.trim(),
   topping3: formValues.topping3.trim(),
   topping4: formValues.topping4.trim(),
+  gluten: formValues.gluten.trim(),
   special: formValues.special.trim(),
  }
+ postNewOrder(newOrder)
  }
+ useEffect(() => {
+   getOrder()
+ },[])
 
   return (
     <>
       <h1>Lambda Eats</h1>
+      <nav>
       <Link to ='/'>Home</Link>
+      </nav>
       <div>
       <Switch>
         <Route path='/pizza'>

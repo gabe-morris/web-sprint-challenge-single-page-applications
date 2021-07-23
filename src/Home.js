@@ -14,7 +14,7 @@ history.push('/pizza')
 return(
 <div className='home-wrapper'>
 <h1>Your Favorite Food, Delivered While Coding</h1>
-<button onClick={pizzaRoute}>Create Your Own Pizza!</button>
+<button id='order-pizza' onClick={pizzaRoute}>Create Your Own Pizza!</button>
 </div>
 
 )
