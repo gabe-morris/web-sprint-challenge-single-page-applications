@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {useHistory} from 'react-router-dom'
 
 export default function Form(props){
 const {
@@ -9,6 +9,8 @@ change,
 disabled,
 errors,
 } = props
+
+const history = useHistory()
 const onSubmit = evt => {
     evt.preventDefault()
     submit()
@@ -19,6 +21,11 @@ const onChange = evt => {
 
     change(name,valueToUse)
 }
+const readyRoute = () => {
+    console.log('submitting order...')
+    history.push('/pizza/order-confirmed')
+    }
+    
 return (
 <form id ='pizza-form' onSubmit ={onSubmit}>
     <div className = 'form-group'>
@@ -139,7 +146,7 @@ return (
         onChange = {onChange}
         />
         </div>
-        <button disabled={disabled}>Add To Order</button>
+        <button onClick={readyRoute} disabled={disabled}>Submit Order</button>
     </div>
 </form>
 

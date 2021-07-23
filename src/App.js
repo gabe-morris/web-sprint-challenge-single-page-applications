@@ -3,6 +3,7 @@ import { Route,Link,Switch} from "react-router-dom";
 import Home from './Home.js'
 import axios from 'axios'
 import Form from './Form.js'
+import Order from './Confirmed.js'
 import schema from './formSchema.js'
 import { reach } from "yup";
 //Initial Values
@@ -86,6 +87,9 @@ reach(schema,name)
       </nav>
       <div>
       <Switch>
+        <Route path='/pizza/order-confirmed'>
+          <Order/>
+        </Route>
         <Route path='/pizza'>
           <Form
           values={formValues}
